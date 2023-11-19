@@ -2,6 +2,11 @@ import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 
 
+//padding
+const double kDefaultPadding = 20;
+const double kSmallPadding = 8;
+
+//text styles 
 final TextStyle subtitleText = GoogleFonts.poppins(
   fontSize: 9,
   fontWeight:  FontWeight.w600,  
@@ -37,3 +42,4 @@ final TextStyle largeHeader =  GoogleFonts.poppins(
   fontSize: 30,
   fontWeight:  FontWeight.w600,
 );
+

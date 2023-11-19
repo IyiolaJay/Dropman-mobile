@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:dropman/styles/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Dropman());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Dropman extends StatelessWidget {
+  const Dropman({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dropman ',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Dropman',
+      theme: lightTheme,
       home: Container(),
     );
   }
