@@ -1,3 +1,4 @@
+import 'package:dropman/view/onboarding/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dropman/styles/theme.dart';
 
@@ -14,7 +15,7 @@ class Dropman extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Dropman',
       theme: lightTheme,
-      home: Container(),
+      home: const SplashScreen(),
     );
   }
 }
