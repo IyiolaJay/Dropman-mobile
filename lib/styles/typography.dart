@@ -42,4 +42,3 @@ final TextStyle largeHeader =  GoogleFonts.poppins(
   fontSize: 30,
   fontWeight:  FontWeight.w600,
 );
-
