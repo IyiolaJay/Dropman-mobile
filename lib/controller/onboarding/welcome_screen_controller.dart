@@ -23,17 +23,23 @@ class _WelcomeControllerState extends State<WelcomeController> {
   //
   void _navigatePages(int index, String? skipType) {
     if (skipType == "Sign In") {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
+      Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const SignInScreen(),
       ));
     } else if (index == 2 || skipType == "Skip") {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
+      Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const SignUpScreen(),
       ));
     } else {
       _controller.nextPage(
           duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
     }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override

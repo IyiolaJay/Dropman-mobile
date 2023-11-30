@@ -9,7 +9,7 @@ final ButtonStyle primaryButtonStyle = ElevatedButton.styleFrom().copyWith(
     borderRadius: BorderRadius.circular(15),
   ),
 ),
- fixedSize: const MaterialStatePropertyAll(Size.fromHeight(47)),
+ fixedSize:  MaterialStateProperty.all(const Size.fromHeight(47)),
  backgroundColor: const MaterialStatePropertyAll(kSecondaryColorBlack) 
 );
 
