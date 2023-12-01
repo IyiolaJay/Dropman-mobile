@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../styles/buttons.dart';
 import '../utils/input_field.dart';
 
 class SignUpController extends StatefulWidget {
-  const SignUpController({super.key});
+  final  Function nextAuthScreen;
+  const SignUpController({super.key, required this.nextAuthScreen, });
 
   @override
   State<SignUpController> createState() => _SignUpControllerState();
@@ -12,9 +14,9 @@ class SignUpController extends StatefulWidget {
 
 class _SignUpControllerState extends State<SignUpController> {
   String email = "";
-  String firstName= "";
-  String lastName= "";
-  String phoneNumber= "";
+  String firstName = "";
+  String lastName = "";
+  String phoneNumber = "";
   String password = "";
   final _formKey = GlobalKey<FormState>();
 
@@ -25,16 +27,17 @@ class _SignUpControllerState extends State<SignUpController> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  //
 
-  
-  //TODO implement remaining validators
-  //email validator
+  //Validators
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a valid email';
     }
     return null;
   }
+
+  //
   String? validateName(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a valid name';
@@ -42,13 +45,28 @@ class _SignUpControllerState extends State<SignUpController> {
     return null;
   }
 
+  //
+  String? validatePhone(String? value) {
+    if (value == null || value.isEmpty || value.length <= 1) {
+      return 'Please enter a valid phone number';
+    }
+    return null;
+  }
+
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty || value.length <= 6) {
+      return 'Password should not be less than 6 characters';
+    }
+    return null;
+  }
+
   void _submitLoginDetails() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      widget.nextAuthScreen();
       return;
     }
   }
-
 
   @override
   void dispose() {
@@ -62,101 +80,172 @@ class _SignUpControllerState extends State<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
-              child: InputFields(
-                controller: _firstNameController,
-                hintText: "First Name",
-                iconUrl: const Icon(Icons.person),
-                inputType: TextInputType.text,
-                onSaved: (value) {
-                  setState(() {
-                    firstName = value;
-                  });
-                },
-                validator: validateEmail,
+    final ThemeData theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Form(
+        
+        key: _formKey,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Center(
+            child: SizedBox(
+              width: 306,
+              child: Text(
+                "Please enter your details to complete sign up",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.0,
+                  color: Colors.black,
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
-              child: InputFields(
-                controller: _lastNameController,
-                hintText: "Last Name",
-                iconUrl: const Icon(Icons.person),
-                inputType: TextInputType.text,
-                onSaved: (value) {
-                  setState(() {
-                    lastName = value;
-                  });
-                },
-                validator: validateEmail,
+          ),
+          const SizedBox(height: 36),
+          
+          Padding(
+            padding: const EdgeInsets.only(bottom: 25),
+            child: InputFields(
+              controller: _firstNameController,
+              hintText: "First Name",
+              iconUrl: const Icon(Icons.person),
+              inputType: TextInputType.text,
+              onSaved: (value) {
+                setState(() {
+                  firstName = value;
+                });
+              },
+              validator: validateName,
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: InputFields(
+              controller: _lastNameController,
+              hintText: "Last Name",
+              iconUrl: const Icon(Icons.person),
+              inputType: TextInputType.text,
+              onSaved: (value) {
+                setState(() {
+                  lastName = value;
+                });
+              },
+              validator: validateName,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: InputFields(
+              controller: _emailController,
+              hintText: "Email",
+              iconUrl: const Icon(Icons.email_outlined),
+              inputType: TextInputType.text,
+              onSaved: (value) {
+                setState(() {
+                  email = value;
+                });
+              },
+              validator: validateEmail,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: InputFields(
+              controller: _phoneNumberController,
+              hintText: "Phone Number",
+              iconUrl: const Icon(Icons.phone),
+              inputType: TextInputType.phone,
+              onSaved: (value) {
+                setState(() {
+                  phoneNumber = value;
+                });
+              },
+              validator: validatePhone,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: InputFields(
+              obscureText: true,
+              controller: _passwordController,
+              hintText: "Password",
+              iconUrl: const Icon(Icons.lock),
+              inputType: TextInputType.text,
+              onSaved: (value) {
+                setState(() {
+                  password = value;
+                });
+              },
+              validator: validatePassword,
+            ),
+          ),
+
+          SizedBox(
+            child: Text.rich(TextSpan(children: [
+              TextSpan(
+                text: 'By clicking on proceed means you have agreed to our ',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+              ),
+              TextSpan(
+                text: 'privacy policy, terms and conditions. ',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12,
+                      color: const Color(0xFF328BBD),
+                    ),
+              ),
+            ])),
+          ),
+
+          ///
+          const Spacer(),
+           Center(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Already have an account? ',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Sign in',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12,
+                      color: const Color(0xFF328BBD),
+                    ),
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
-              child: InputFields(
-                controller: _emailController,
-                hintText: "Email",
-                iconUrl: const Icon(Icons.email_outlined),
-                inputType: TextInputType.text,
-                onSaved: (value) {
-                  setState(() {
-                    email = value;
-                  });
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: ElevatedButton(
+                onPressed: () {
+                  _submitLoginDetails();
                 },
-                validator: validateEmail,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
-              child: InputFields(
-                controller: _phoneNumberController,
-                hintText: "Phone Number",
-                iconUrl: const Icon(Icons.phone),
-                inputType: TextInputType.phone,
-                onSaved: (value) {
-                  setState(() {
-                    phoneNumber = value;
-                  });
-                },
-                validator: validateEmail,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
-              child: InputFields(
-                controller: _passwordController,
-                hintText: "Password",
-                iconUrl: const Icon(Icons.lock),
-                inputType: TextInputType.text,
-                onSaved: (value) {
-                  setState(() {
-                    password = value;
-                  });
-                },
-                validator: validateEmail,
-              ),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
-                  onPressed: () {
-                    _submitLoginDetails();
-                  },
-                  style: primaryButtonStyle.copyWith(
-                      fixedSize: const MaterialStatePropertyAll(Size(double.maxFinite, 47))),
-                  child: Text(
-                    "Sign Up",
-                    style: Theme.of(context).textTheme.bodySmall,
-                  )),
-            ),
-          ]),
+                style: primaryButtonStyle.copyWith(
+                    fixedSize: const MaterialStatePropertyAll(
+                        Size(double.maxFinite, 47))),
+                child: Text(
+                  "Sign Up",
+                  style: theme.textTheme.bodySmall,
+                )),
+          ),
+        ]),
+      ),
     );
   }
 }
