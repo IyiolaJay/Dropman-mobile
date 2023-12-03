@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../styles/buttons.dart';
+import '../../styles/colors.dart';
+import '../../styles/typography.dart';
 import '../utils/input_field.dart';
 
 class SignUpController extends StatefulWidget {
@@ -66,6 +68,9 @@ class _SignUpControllerState extends State<SignUpController> {
       widget.nextAuthScreen();
       return;
     }
+    // To skip validations, comment the if block and uncomment this block
+    // widget.nextAuthScreen(); 
+
   }
 
   @override
@@ -82,7 +87,7 @@ class _SignUpControllerState extends State<SignUpController> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding:  const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Form(
         
         key: _formKey,
@@ -105,7 +110,7 @@ class _SignUpControllerState extends State<SignUpController> {
           const SizedBox(height: 36),
           
           Padding(
-            padding: const EdgeInsets.only(bottom: 25),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
               controller: _firstNameController,
               hintText: "First Name",
@@ -121,7 +126,7 @@ class _SignUpControllerState extends State<SignUpController> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
               controller: _lastNameController,
               hintText: "Last Name",
@@ -136,7 +141,7 @@ class _SignUpControllerState extends State<SignUpController> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
               controller: _emailController,
               hintText: "Email",
@@ -150,8 +155,10 @@ class _SignUpControllerState extends State<SignUpController> {
               validator: validateEmail,
             ),
           ),
+
+          //
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
               controller: _phoneNumberController,
               hintText: "Phone Number",
@@ -165,8 +172,10 @@ class _SignUpControllerState extends State<SignUpController> {
               validator: validatePhone,
             ),
           ),
+
+          //
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
               obscureText: true,
               controller: _passwordController,
@@ -182,6 +191,7 @@ class _SignUpControllerState extends State<SignUpController> {
             ),
           ),
 
+          //
           SizedBox(
             child: Text.rich(TextSpan(children: [
               TextSpan(
@@ -229,9 +239,11 @@ class _SignUpControllerState extends State<SignUpController> {
               ),
             ),
           ),
+
+          //
           const Spacer(),
           Padding(
-            padding: const EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: ElevatedButton(
                 onPressed: () {
                   _submitLoginDetails();
@@ -241,7 +253,10 @@ class _SignUpControllerState extends State<SignUpController> {
                         Size(double.maxFinite, 47))),
                 child: Text(
                   "Sign Up",
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
+                
                 )),
           ),
         ]),

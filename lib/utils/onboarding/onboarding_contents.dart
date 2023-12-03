@@ -27,7 +27,7 @@ class OnboardingContents extends StatelessWidget {
           child: Text(
             description,
             textAlign: TextAlign.center,
-            style: smallBodyText.copyWith(color: theme.colorScheme.onSecondary),
+            style: smallBodyText.copyWith(color: theme.colorScheme.secondary),
           ),
         ),
       ],

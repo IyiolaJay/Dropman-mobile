@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../controller/onboarding/splash_screen.dart';
+import '../../controller/onboarding/splash_controller.dart';
 import '../../styles/colors.dart';
 import 'package:dropman/view/onboarding/welcome_screen.dart';
 

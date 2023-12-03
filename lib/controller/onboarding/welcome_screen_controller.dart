@@ -86,7 +86,8 @@ class _WelcomeControllerState extends State<WelcomeController> {
                 style: primaryButtonStyle,
                 child: Text(
                   currentIndex == 2 ? "Sign In" : "Continue",
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall!
+                        .copyWith(color: theme.colorScheme.primary),
                 ),
               ),
             ),

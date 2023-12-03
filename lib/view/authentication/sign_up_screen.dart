@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:dropman/controller/authentication/otp_controller.dart';
 import 'package:dropman/controller/authentication/sign_up_controller.dart';
 import 'package:dropman/styles/colors.dart';
-import 'package:flutter/material.dart';
 
 import 'package:dropman/view/authentication/utils/auth_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -69,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         if (index == 0) {
                           return SignUpController(nextAuthScreen: _navigatePages,);
                           }
-                        return const OTPScreen();
+                        return const OTPController();
                       },
                       controller: _controller,
                       itemCount: 2,

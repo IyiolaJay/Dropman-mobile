@@ -41,6 +41,7 @@ class InputFields extends StatelessWidget {
                 },
 
                 decoration: InputDecoration(
+                  
                   errorStyle: const TextStyle(
                     fontSize: 0,
                     height: 0,
