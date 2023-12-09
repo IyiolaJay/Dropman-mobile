@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../styles/buttons.dart';
-import '../../styles/colors.dart';
 import '../../styles/typography.dart';
 import '../utils/input_field.dart';
 
 class SignUpController extends StatefulWidget {
-  final  Function nextAuthScreen;
-  const SignUpController({super.key, required this.nextAuthScreen, });
+  final Function nextAuthScreen;
+  const SignUpController({
+    super.key,
+    required this.nextAuthScreen,
+  });
 
   @override
   State<SignUpController> createState() => _SignUpControllerState();
@@ -68,9 +70,6 @@ class _SignUpControllerState extends State<SignUpController> {
       widget.nextAuthScreen();
       return;
     }
-    // To skip validations, comment the if block and uncomment this block
-    // widget.nextAuthScreen(); 
-
   }
 
   @override
@@ -87,9 +86,8 @@ class _SignUpControllerState extends State<SignUpController> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Padding(
-      padding:  const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Form(
-        
         key: _formKey,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Center(
@@ -108,7 +106,7 @@ class _SignUpControllerState extends State<SignUpController> {
             ),
           ),
           const SizedBox(height: 36),
-          
+
           Padding(
             padding: const EdgeInsets.only(bottom: kDefaultPadding),
             child: InputFields(
@@ -215,25 +213,22 @@ class _SignUpControllerState extends State<SignUpController> {
 
           ///
           const Spacer(),
-           Center(
-            child: Text.rich(
-              TextSpan(
+          Center(
+            child: RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontWeight: FontWeight.w100,
+                      fontSize: 12,
+                    ),
                 children: [
                   TextSpan(
                     text: 'Already have an account? ',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontWeight: FontWeight.w100,
-                      fontSize: 12,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: 'Sign in',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontWeight: FontWeight.w100,
-                      fontSize: 12,
-                      color: const Color(0xFF328BBD),
-                    ),
+                    style: TextStyle(color: Color(0xFF328BBD)),
                   ),
                 ],
               ),
@@ -256,7 +251,6 @@ class _SignUpControllerState extends State<SignUpController> {
                   style: theme.textTheme.bodySmall!.copyWith(
                     color: theme.colorScheme.primary,
                   ),
-                
                 )),
           ),
         ]),

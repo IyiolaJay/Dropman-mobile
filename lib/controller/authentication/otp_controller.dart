@@ -17,9 +17,8 @@ class OTPController extends StatefulWidget {
 class _OTPControllerState extends State<OTPController> {
   final TextEditingController _controller = TextEditingController(); //Auto disposed by the PinCodeField
 
-   late StreamController<ErrorAnimationType> errorController;
+  late StreamController<ErrorAnimationType> errorController;
 
-  // final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   String currentText ="";
   
@@ -30,6 +29,7 @@ class _OTPControllerState extends State<OTPController> {
       else{
         print("No error");
         // do something with OTP
+
       }
   }
 
@@ -120,7 +120,7 @@ class _OTPControllerState extends State<OTPController> {
                   fixedSize: const MaterialStatePropertyAll(
                       Size(double.maxFinite, 47))),
               child: Text(
-                "Sign Up",
+                "Verify",
                 style: theme.textTheme.bodySmall!.copyWith(
                   color: theme.colorScheme.primary,
                 ),

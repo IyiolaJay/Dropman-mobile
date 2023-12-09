@@ -3,7 +3,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../data/onboarding_data.dart';
 import 'package:dropman/styles/buttons.dart';
-import 'package:dropman/styles/colors.dart';
 import '../../utils/onboarding/onboarding_contents.dart';
 import '../../view/authentication/sign_in_screen.dart';
 import '../../view/authentication/sign_up_screen.dart';
@@ -65,11 +64,11 @@ class _WelcomeControllerState extends State<WelcomeController> {
         SmoothPageIndicator(
           controller: _controller,
           count: onboardingPagesData.length,
-          effect: const ExpandingDotsEffect(
-              dotColor: Color(0xFF7F7F7F),
+          effect:  ExpandingDotsEffect(
+              dotColor:const  Color(0xFF7F7F7F),
               dotHeight: 5.5,
               dotWidth: 8,
-              activeDotColor: kSecondaryColorBlack),
+              activeDotColor: theme.colorScheme.secondary),
         ),
         Expanded(
             child: Row(

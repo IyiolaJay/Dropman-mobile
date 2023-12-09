@@ -1,3 +1,4 @@
+import 'package:dropman/view/authentication/sign_in_screen.dart';
 import 'package:dropman/view/onboarding/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dropman/styles/theme.dart';
@@ -15,7 +16,8 @@ class Dropman extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Dropman',
       theme: lightTheme,
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
+      home: const SignInScreen(),
     );
   }
 }
