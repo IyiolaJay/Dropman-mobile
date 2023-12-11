@@ -1,4 +1,4 @@
-import 'package:dropman/models/onboarding_model.dart';
+import 'package:dropman/models/onboarding/onboarding_model.dart';
 
 final List<OnboardingData> onboardingPagesData = [
   OnboardingData("assets/images/riderphoto.png",

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../../controller/dashboard/dashboard_controller.dart';
+
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-          child: CircleAvatar(
-            backgroundColor: Colors.red,
-          ),
-        ),
-    );
+    return  const Scaffold(
+        body: Padding(
+          padding: EdgeInsets.all(20),
+          child: DashboardController(),
+    ));
   }
 }

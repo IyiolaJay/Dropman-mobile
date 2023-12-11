@@ -3,7 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../data/onboarding_data.dart';
 import 'package:dropman/styles/buttons.dart';
-import '../../utils/onboarding/onboarding_contents.dart';
+import 'utils/onboarding/onboarding_contents.dart';
 import '../../view/authentication/sign_in_screen.dart';
 import '../../view/authentication/sign_up_screen.dart';
 
