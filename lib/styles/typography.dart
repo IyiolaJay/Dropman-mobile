@@ -21,14 +21,10 @@ final TextStyle smallBodyText =  GoogleFonts.poppins(
 );
 
 
-final TextStyle bodyText = GoogleFonts.poppins(textStyle: const TextStyle(
- fontSize: 16,
+final TextStyle bodyText = GoogleFonts.poppins(
+  fontSize: 16,
   fontWeight: FontWeight.w600,
   color: kSecondaryColorBlack,
-),
-  // fontSize: 16,
-  // fontWeight: FontWeight.w600,
-  // color: kSecondaryColorBlack,
 );
 
 final TextStyle largeBodyText = GoogleFonts.poppins(
