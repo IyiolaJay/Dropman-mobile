@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dropman/controller/authentication/otp_controller.dart';
 import 'package:dropman/controller/authentication/sign_up_controller.dart';
 
-import 'package:dropman/view/authentication/utils/auth_app_bar.dart';
+import 'package:dropman/view/utils/auth_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SignUpScreen extends StatefulWidget {

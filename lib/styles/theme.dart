@@ -18,6 +18,7 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
     displaySmall: smallHeader,
     displayMedium: mediumHeader,
     displayLarge: largeHeader,
+    labelSmall: subtitleText,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: primaryButtonStyle,

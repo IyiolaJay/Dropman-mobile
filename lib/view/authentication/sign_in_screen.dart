@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:dropman/view/authentication/utils/auth_app_bar.dart';
+import 'package:dropman/view/utils/auth_app_bar.dart';
 import 'package:dropman/controller/authentication/sign_in_controller.dart';
 import '../../styles/typography.dart';
 
