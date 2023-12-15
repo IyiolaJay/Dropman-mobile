@@ -38,6 +38,34 @@ class DashboardController extends StatelessWidget {
         SizedBox(
           height: 220,
           child: DashboardCard(mediaWidth: mediaWidth),
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8),
+          child: Text('Quick Activities'),
+        ),
+        
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            SizedBox(
+              height: 150,
+              width: 100,
+              child: Placeholder(),
+            ),
+            SizedBox(
+              height: 150,
+              width: 100,
+              child: Placeholder(),
+            ),
+            SizedBox(
+              height: 150,
+              width: 100,
+              child: Placeholder(),
+            ),
+          ],
         )
       ],
     );
