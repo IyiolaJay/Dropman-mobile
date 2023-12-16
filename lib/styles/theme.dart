@@ -6,23 +6,22 @@ import 'buttons.dart';
 import 'inputs.dart';
 
 final ThemeData lightTheme = ThemeData.light().copyWith(
-  useMaterial3: true,
-  colorScheme: const ColorScheme.light(
-    primary: kPrimaryColorWhite,
-    secondary: kSecondaryColorBlack,
+    useMaterial3: true,
+    colorScheme: const ColorScheme.light(
+      primary: kPrimaryColorWhite,
+      secondary: kSecondaryColorBlack,
     ),
-  textTheme: TextTheme(
-    bodySmall: smallBodyText,
-    bodyMedium: bodyText,
-    bodyLarge: largeBodyText,
-    displaySmall: smallHeader,
-    displayMedium: mediumHeader,
-    displayLarge: largeHeader,
-    labelSmall: subtitleText,
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: primaryButtonStyle,
-  ),
-  inputDecorationTheme: inputField
-
-);
+    scaffoldBackgroundColor: kPrimaryColorWhite,
+    textTheme: TextTheme(
+      bodySmall: smallBodyText,
+      bodyMedium: bodyText,
+      bodyLarge: largeBodyText,
+      displaySmall: smallHeader,
+      displayMedium: mediumHeader,
+      displayLarge: largeHeader,
+      labelSmall: subtitleText,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: primaryButtonStyle,
+    ),
+    inputDecorationTheme: inputField);

@@ -1,3 +1,4 @@
+import 'package:dropman/styles/typography.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/dashboard_stack_card.dart';
@@ -10,6 +11,7 @@ class DashboardController extends StatelessWidget {
     final mediaWidth = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -39,34 +41,59 @@ class DashboardController extends StatelessWidget {
           height: 220,
           child: DashboardCard(mediaWidth: mediaWidth),
         ),
-        const SizedBox(
-          height: 24,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8, top: kDefaultPadding - 4),
+          child: Text(
+            'Quick Activities',
+            style: Theme.of(context).textTheme.displaySmall,
+            textAlign: TextAlign.left,
+          ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(8),
-          child: Text('Quick Activities'),
-        ),
-        
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
             SizedBox(
-              height: 150,
-              width: 100,
+              height: 120,
+              width: 110,
               child: Placeholder(),
             ),
             SizedBox(
-              height: 150,
-              width: 100,
+              height: 120,
+              width: 110,
               child: Placeholder(),
             ),
             SizedBox(
-              height: 150,
-              width: 100,
+              height: 120,
+              width: 110,
               child: Placeholder(),
             ),
           ],
-        )
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8, top: kDefaultPadding + 4),
+          child: Text(
+            'Recent Deliveries',
+            style: Theme.of(context).textTheme.displaySmall,
+            textAlign: TextAlign.left,
+          ),
+        ),
+
+        //
+         ListTile(
+            leading: const CircleAvatar(
+              backgroundColor: Colors.black,
+            ),
+         
+            title: Text("Okafor Emmanuel",
+         
+            style: Theme.of(context).textTheme.bodyMedium,
+            
+            ),
+            trailing: const Icon(Icons.check_box),
+            contentPadding: const EdgeInsets.all(0),
+         
+                 ),
+         
       ],
     );
   }
