@@ -7,14 +7,14 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return const Scaffold(
         body: SingleChildScrollView(
-          child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: DashboardController(),
-              ),
-          ),
-        ));
+      child: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: DashboardController(),
+        ),
+      ),
+    ));
   }
 }

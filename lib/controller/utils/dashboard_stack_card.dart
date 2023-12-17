@@ -18,7 +18,7 @@ class DashboardCard extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Positioned(
-          bottom: 10,
+          bottom:0,
           child: Card(
             child: Container(
               height: 180,
@@ -31,7 +31,7 @@ class DashboardCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 20,
+          bottom: 10,
           child: Card(
             child: Container(
                 height: 180,
