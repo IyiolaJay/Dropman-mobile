@@ -1,7 +1,9 @@
 import 'package:dropman/styles/typography.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/dashboard_stack_card.dart';
+import '../../models/dashboard/quick_actions.dart';
+import '../utils/dashboard/dashboard_stack_card.dart';
+import '../utils/recent_deliveries.dart';
 
 class DashboardController extends StatelessWidget {
   const DashboardController({super.key});
@@ -9,22 +11,6 @@ class DashboardController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaWidth = MediaQuery.of(context).size.width;
-
-    List<Widget> generateQuickActivities() {
-      return List.generate(3, (index) {
-        return SizedBox(
-          height: 120,
-          width: 110,
-          child: Placeholder(
-              child: Center(
-            child: CircleAvatar(
-              child:
-                  Text('$index', style: Theme.of(context).textTheme.bodySmall),
-            ),
-          )),
-        );
-      });
-    }
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -41,7 +27,7 @@ class DashboardController extends StatelessWidget {
             ),
             Text(
               "Hi, Iyiola",
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             const Spacer(),
             CircleAvatar(
@@ -54,10 +40,17 @@ class DashboardController extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(
+          height: 20,
+        ),
+
+        //
         SizedBox(
           height: 200,
           child: DashboardCard(mediaWidth: mediaWidth),
         ),
+
+        //
         Padding(
           padding: const EdgeInsets.only(bottom: 8, top: kDefaultPadding - 4),
           child: Text(
@@ -66,10 +59,37 @@ class DashboardController extends StatelessWidget {
             textAlign: TextAlign.left,
           ),
         ),
+
+        //
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: generateQuickActivities(),
+          children: [
+            ...List.generate(3, (index) {
+              return Container(
+                alignment: Alignment.center,
+                height: 110,
+                width: 100,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1.5, color: Colors.black),
+                    borderRadius: BorderRadius.circular(4)),
+                child: Column(children: [
+                  Image.asset(
+                    q[index].imagePath,
+                    fit: BoxFit.scaleDown,
+                    height: 80,
+                    width: 70,
+                  ),
+                  Text(
+                    q[index].title,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  )
+                ]),
+              );
+            })
+          ],
         ),
+
+        //
         Padding(
           padding: const EdgeInsets.only(bottom: 8, top: kDefaultPadding + 4),
           child: Text(
@@ -82,66 +102,7 @@ class DashboardController extends StatelessWidget {
         //
         ...List.generate(
           6,
-          (index) => Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            margin: const EdgeInsets.only(bottom: 8),
-            child: ListTile(
-              leading: Container(
-                width: 60,
-                height: 60,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: Image.asset(
-                  'assets/images/red-bike.png',
-                  fit: BoxFit.scaleDown,
-                  height: 60,
-                  width: 60,
-                ),
-              ),
-              ////
-
-              title: Text(
-                "Emmanuel Okafor",
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Address",
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontSize: 9,
-                          ),
-                    ),
-                    Text('Delivery Date',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              fontSize: 9,
-                            )),
-                  ]),
-              trailing: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Icon(
-                    Icons.check_box,
-                    color: Colors.green,
-                  ),
-                  Text(
-                    "#2,345",
-                  )
-                ],
-              ),
-              contentPadding: const EdgeInsets.all(0),
-            ),
-          ),
+          (index) => const RecentDeliveryItems(),
         ),
       ],
     );
