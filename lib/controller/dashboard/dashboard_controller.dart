@@ -1,13 +1,32 @@
-import 'package:dropman/styles/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:dropman/styles/typography.dart';
 
 import '../../models/dashboard/quick_actions.dart';
+import '../utils/animation/slide_animation.dart';
 import '../utils/dashboard/dashboard_stack_card.dart';
 import '../utils/recent_deliveries.dart';
 
-class DashboardController extends StatelessWidget {
+class DashboardController extends StatefulWidget {
   const DashboardController({super.key});
 
+  @override
+  State<DashboardController> createState() => _DashboardControllerState();
+}
+
+class _DashboardControllerState extends State<DashboardController> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final mediaWidth = MediaQuery.of(context).size.width;
@@ -65,25 +84,31 @@ class DashboardController extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ...List.generate(3, (index) {
-              return Container(
-                alignment: Alignment.center,
-                height: 110,
-                width: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 1.5, color: Colors.black),
-                    borderRadius: BorderRadius.circular(4)),
-                child: Column(children: [
-                  Image.asset(
-                    q[index].imagePath,
-                    fit: BoxFit.scaleDown,
-                    height: 80,
-                    width: 70,
-                  ),
-                  Text(
-                    q[index].title,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  )
-                ]),
+              return SlideListAnimation(
+                animationController: _controller,
+                itemCount: 3,
+                position: index,
+                slideDirection: SlideDirection.fromRight,
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 110,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1.5, color: Colors.black),
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Column(children: [
+                    Image.asset(
+                      q[index].imagePath,
+                      fit: BoxFit.scaleDown,
+                      height: 80,
+                      width: 70,
+                    ),
+                    Text(
+                      q[index].title,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ]),
+                ),
               );
             })
           ],
@@ -102,7 +127,12 @@ class DashboardController extends StatelessWidget {
         //
         ...List.generate(
           6,
-          (index) => const RecentDeliveryItems(),
+          (index) => SlideListAnimation(
+            animationController: _controller,
+            itemCount: 6,
+            position: index,
+            slideDirection: SlideDirection.fromRight,
+            child: const RecentDeliveryItems()),
         ),
       ],
     );

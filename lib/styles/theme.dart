@@ -24,4 +24,20 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: primaryButtonStyle,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      selectedItemColor: kSecondaryColorBlack,
+      unselectedItemColor: Colors.grey,
+      showUnselectedLabels: true,
+      selectedLabelStyle: smallBodyText.copyWith(
+        fontSize: 9,
+        fontWeight: FontWeight.w600,
+      ),
+      unselectedLabelStyle:  smallBodyText.copyWith(
+        fontSize: 9,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
     inputDecorationTheme: inputField);
