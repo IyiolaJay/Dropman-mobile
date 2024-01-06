@@ -24,7 +24,6 @@ class InputFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
                 obscureText: obscureText,
                 controller: controller,
                 keyboardType: inputType,

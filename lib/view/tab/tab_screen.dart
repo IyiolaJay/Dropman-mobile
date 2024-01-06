@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:dropman/view/dashboard/dashboard_screen.dart';
 import 'package:dropman/view/settings/settings_screen.dart';
 
@@ -51,13 +52,22 @@ class _TabScreenState extends State<TabScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light, // StatusBar background color
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white, // NavigationBar background color
+    ));
+
     return Scaffold(
+      extendBody: true,
+      resizeToAvoidBottomInset: true,
       body: navPages[_currentIndex],
       bottomNavigationBar: SizedBox(
         height: 80,
         child: ClipRect(
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: BottomNavigationBar(
                 currentIndex: _currentIndex,
                 onTap: (value) {

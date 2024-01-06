@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../styles/buttons.dart';
 import '../../styles/typography.dart';
@@ -68,8 +69,14 @@ class _SignUpControllerState extends State<SignUpController> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       widget.nextAuthScreen();
+      _setLoginStatus(true);      
       return;
     }
+  }
+
+  void _setLoginStatus(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLogin', status);
   }
 
   @override

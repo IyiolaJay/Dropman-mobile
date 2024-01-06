@@ -1,10 +1,12 @@
-import 'package:dropman/view/dashboard/dashboard_screen.dart';
-import 'package:dropman/view/onboarding/splash_screen.dart';
-import 'package:dropman/view/tab/tab_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:dropman/view/onboarding/splash_screen.dart';
 import 'package:dropman/styles/theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const Dropman());
 }
 
@@ -17,8 +19,7 @@ class Dropman extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Dropman',
       theme: lightTheme,
-      // home: const SplashScreen(),
-      home: const TabScreen(),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,6 +1,7 @@
-import 'package:dropman/view/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:dropman/view/tab/tab_screen.dart';
 import 'package:dropman/controller/utils/input_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../styles/buttons.dart';
 import '../../styles/typography.dart';
 
@@ -35,10 +36,17 @@ class _SignInControllerState extends State<SignInController> {
   void _onSignInPressed() {
     // Implement logic to handle sign-in using _emailController.text and _passwordController.text
     //implement form validation
-
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen(),));
+  _setLoginStatus(true);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const TabScreen(),));
+  }
+  
+  
+  void _setLoginStatus(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLogin', status);
   }
 
+  
   Widget _buildEmailField() {
     return InputFields(
       validator: validateEmail,
